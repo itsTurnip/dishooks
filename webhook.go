@@ -57,7 +57,7 @@ type WebhookMessage struct {
 	Username  string   `json:"username"`
 	AvatarURL string   `json:"avatar_url"`
 	TTS       bool     `json:"tts"`
-	Embeds    *[]Embed `json:"embeds"`
+	Embeds    []*Embed `json:"embeds"`
 
 	// Two more fields named `file` and `payload_json` are not presented here,
 	// they are used for sending files and actually not used for regular messages.

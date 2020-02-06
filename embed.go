@@ -58,7 +58,7 @@ type EmbedThumbnail struct {
 	Width int `json:"width"`
 }
 
-// EmbedImage represents Video that would be inside of the embed
+// EmbedVideo represents Video that would be inside of the embed
 type EmbedVideo struct {
 	// URL source of video
 	URL string `json:"url"`
