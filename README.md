@@ -1,7 +1,7 @@
 # dishooks
 [![GoDoc](https://godoc.org/github.com/itsTurnip/dishooks?status.svg)](https://godoc.org/github.com/itsTurnip/dishooks)
 
-Dishooks is a simple Discord webhook API wrapper.
+dishooks is a simple Discord webhook API wrapper.
 
 Example:
 ```golang

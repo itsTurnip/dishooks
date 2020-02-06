@@ -12,12 +12,14 @@ import (
 	"strings"
 )
 
+// WebhookType is a webhook type for discord webhooks
+// https://discordapp.com/developers/docs/resources/webhook#webhook-object-webhook-types
 type WebhookType int
 
 const (
 	// Incoming type Webhooks can post messages to channels with a generated token
 	Incoming WebhookType = iota + 1
-	// ChannelFollower Webhooks are internal webhooks used with Channel Following
+	// ChannelFollower type Webhooks are internal webhooks used with Channel Following
 	// to post new messages into channels
 	ChannelFollower
 )
@@ -25,7 +27,8 @@ const (
 const discordHost string = "discordapp.com"
 const discordPathPattern string = "/api/webhooks/[0-9]{0,20}/[a-zA-Z0-9_-]+"
 
-var WebhookParseError = errors.New("Provided URL is not a Discord webhook URL")
+// ErrParseWebhook represents error from `WebhookFromURL`
+var ErrParseWebhook = errors.New("Provided URL is not a Discord webhook URL")
 
 // Webhook is a representation of discord webhooks
 type Webhook struct {
@@ -61,7 +64,7 @@ type WebhookMessage struct {
 	// See `SendFile`.
 }
 
-// Webhook update is used to update webhooks using tokens.
+// WebhookUpdate is used to update webhooks using tokens.
 type WebhookUpdate struct {
 	Name string `json:"name"`
 	// Avatar is a base64 encoded image. https://discordapp.com/developers/docs/reference#image-data
@@ -78,7 +81,7 @@ func WebhookFromURL(webhookURL string) (webhook *Webhook, err error) {
 		return
 	}
 	if urls.Hostname() != discordHost {
-		err = WebhookParseError
+		err = ErrParseWebhook
 		return
 	}
 	ok, err := regexp.MatchString(discordPathPattern, urls.Path)
@@ -86,7 +89,7 @@ func WebhookFromURL(webhookURL string) (webhook *Webhook, err error) {
 		return
 	}
 	if !ok {
-		err = WebhookParseError
+		err = ErrParseWebhook
 		return
 	}
 	path := strings.Split(urls.Path, "/")

@@ -25,6 +25,7 @@ type Embed struct {
 	Fields    []*EmbedField   `json:"fields"`
 }
 
+// Embed footer represents embed's footer
 type EmbedFooter struct {
 	// Footer text. Required.
 	Text string `json:"text"`
@@ -34,6 +35,7 @@ type EmbedFooter struct {
 	ProxyIconURL string `json:"proxy_icon_url"`
 }
 
+// EmbedImage represents Image that would be inside of the embed
 type EmbedImage struct {
 	// URL source of image (only supports http(s) and attachments)
 	URL string `json:"url"`
@@ -56,6 +58,7 @@ type EmbedThumbnail struct {
 	Width int `json:"width"`
 }
 
+// EmbedImage represents Video that would be inside of the embed
 type EmbedVideo struct {
 	// URL source of video
 	URL string `json:"url"`
@@ -65,13 +68,14 @@ type EmbedVideo struct {
 	Width int `json:"width"`
 }
 
+// EmbedAuthor represents author of the embed
 type EmbedAuthor struct {
 	// Name of author
 	Name string `json:"name"`
 	// URL of author
 	URL string `json:"url"`
 	// URL of author icon (only supports http(s) and attachments)
-	IconURl string `json:"icon_url"`
+	IconURL string `json:"icon_url"`
 	// Proxied URL of author icon
 	ProxyIconURL string `json:"proxy_icon_url"`
 }
